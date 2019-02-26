@@ -1,0 +1,16 @@
+# Export all names
+exportPattern(".")
+
+importFrom("graphics", "abline", "axis", "lines", "par", "plot")
+importFrom("stats", "runif")
+
+S3method(Ops, Sample)
+S3method(play, Sample)
+S3method(play, default)
+S3method(plot, Sample)
+S3method(sum, Sample)
+S3method(prod, Sample)
+S3method(print, Sample)
+S3method("sampleLength<-", Sample)
+S3method("[", Sample)
+
