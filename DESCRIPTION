@@ -1,12 +1,19 @@
 Package: sound
-Version: 1.4.5
-Date: 2017-11-10
+Version: 1.4.6
+Date: 2023-12-06
+Authors@R: c(person("Matthias", "Heymann", role = c("aut"),
+	email = "mail@MatthiasHeymann.de"),
+	person("Stefan", "Langenberg", role = c("cre"),
+   email = "langenberg@uni-bonn.de",
+   comment = c(ORCID = "0000-0001-5817-5469")))
 Title: A Sound Interface for R
-Author: Matthias Heymann <mail@MatthiasHeymann.de>
-Maintainer: Stefan Langenberg <langenberg@uni-bonn.de>
 Depends: R (>= 2.1.14)
+Imports: methods
 SystemRequirements: For playing sounds, a command line system tool for playing wav-files is required.
 Description: Basic functions for dealing with wav files and sound samples.
 License: GPL (>= 2)
-URL: http://www.MatthiasHeymann.de
+URL: https://github.com/langenbergstefan/sound
+BugReports: https://github.com/langenbergstefan/sound/issues
+NeedsCompilation: no
+
 

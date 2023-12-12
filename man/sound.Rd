@@ -13,7 +13,7 @@ sound(s) <- value
   \item{value}{ a \code{channels(s)} x \code{sampleLength(s)} matrix of doubles. }
 }
 \details{
-The replacement form can be used to reset the waveform of a sample object. Here, filenames are not accepted for code{s}.
+The replacement form can be used to reset the waveform of a sample object. Here, filenames are not accepted for \code{s}.
 
 The matrix can have one (for mono samples) or two rows (for stereo samples), where in the latter case the first row corresponds to the left and the second row to the right channel.
 

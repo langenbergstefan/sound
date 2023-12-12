@@ -3,6 +3,7 @@ exportPattern(".")
 
 importFrom("graphics", "abline", "axis", "lines", "par", "plot")
 importFrom("stats", "runif")
+importFrom("methods", "is")
 
 S3method(Ops, Sample)
 S3method(play, Sample)

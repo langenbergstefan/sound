@@ -91,7 +91,7 @@ as.Sample <- function(sound,rate=44100,bits=16){
 #=========================================================================
 
 is.Sample <- function(s,argname="'s' "){
-  if (!is.null(class(s)) && class(s)=="Sample") return(list(test=TRUE))
+  if (!is.null(class(s)) && is(s, "Sample")) return(list(test=TRUE))
   if (mode(s)!="character") return(list(test=FALSE,
       error=paste("Argument ",argname,"must be a Sample object or the name of a wav file.",sep="")))
   if (substr(s,nchar(s)-3,nchar(s))!=".wav") return(list(test=FALSE,error="Filename must have the extension .wav."))
@@ -105,7 +105,7 @@ is.Sample <- function(s,argname="'s' "){
 #=========================================================================
 
 loadSample <- function(filename,filecheck=TRUE){
-  if (!is.null(class(filename)) && class(filename)=="Sample") return(filename)
+  if (!is.null(class(filename)) && is(filename, "Sample")) return(filename)
   if (mode(filename)!="character")
     stop("Argument 'filename' must be a character string.")
   if (substr(filename,nchar(filename)-3,nchar(filename))!=".wav")
@@ -152,7 +152,7 @@ loadSample <- function(filename,filecheck=TRUE){
 }
 
 saveSample <- function(s,filename,overwrite=FALSE){
-  if (is.null(class(s)) || class(s)!="Sample")
+  if (is.null(class(s)) || !is(s, "Sample"))
     stop("Argument 's' must be of class 'Sample'.")
   if (mode(filename)!="character")
     stop("Argument 'filename' must be a character string.")
@@ -381,7 +381,7 @@ duration <- function(s) {
 }
 
 "bits<-" <- function(s,value){
-  if (is.null(class(s)) || class(s)!="Sample")
+  if (is.null(class(s)) || !is(s, "Sample"))
     stop("Argument 's' must be of class 'Sample'.")
   if (mode(value)!="numeric" || (value!=8 && value!=16))
     stop("Number of bits must be 8 or 16.")
@@ -390,7 +390,7 @@ duration <- function(s) {
 }
 
 "rate<-" <- function(s,value){
-  if (is.null(class(s)) || class(s)!="Sample")
+  if (is.null(class(s)) || !is(s , "Sample"))
     stop("Argument 's' must be of class 'Sample'.")
   if (mode(value)!="numeric" || value<1000 || value>48000)
     stop("Rate must be an number between 1000 and 48000.")
@@ -403,7 +403,7 @@ duration <- function(s) {
 }
 
 "channels<-" <- function(s,value){
-  if (is.null(class(s)) || class(s)!="Sample")
+  if (is.null(class(s)) || !is(s, "Sample"))
     stop("Argument 's' must be of class 'Sample'.")
   if (mode(value)!="numeric" || !(value==1 || value==2))
     stop("Number of channels must be 1 or 2.")
@@ -425,7 +425,7 @@ duration <- function(s) {
 }
 
 "sampleLength<-.Sample" <- function(s,value){
-  if (is.null(class(s)) || class(s)!="Sample")
+  if (is.null(class(s)) || !is(s,"Sample"))
     stop("Argument 's' must be of class 'Sample'.")
   if (mode(value)!="numeric" || value<1)
     stop("Sample length must be a positive integer.")
@@ -439,7 +439,7 @@ duration <- function(s) {
 }
 
 "duration<-" <- function(s,value){
-  if (is.null(class(s)) || class(s)!="Sample")
+  if (is.null(class(s)) || !is(s,"Sample"))
     stop("Argument 's' must be of class 'Sample'.")
   if (mode(value)!="numeric" || value<=0)
     stop("Duration must be a positive number.")
@@ -519,7 +519,7 @@ fitSampleParameters <- function(s1,s2){
 
 Ops.Sample <- function(e1,e2){
   if (.Generic=="+"){
-    if (is.null(class(e1)) || is.null(class(e2)) || class(e1)!="Sample" || class(e2)!="Sample")
+    if (is.null(class(e1)) || is.null(class(e2)) || !is(e1,"Sample") || !is(e2, "Sample"))
       stop("Arguments must be of class 'Sample'.")
     s <- fitSampleParameters(e1,e2)
     e1 <- s[[1]]
@@ -548,7 +548,7 @@ Ops.Sample <- function(e1,e2){
       sound(e2) <- e1*sound(e2)
       return(e2)
     }
-    else if (!is.null(class(e1)) && !is.null(class(e2)) && class(e1)=="Sample" && class(e2)=="Sample"){
+    else if (!is.null(class(e1)) && !is.null(class(e2)) && is(e1, "Sample") && is(e2, "Sample")){
       s <- fitSampleParameters(e1,e2)
       e1 <- s[[1]]
       e2 <- s[[2]]

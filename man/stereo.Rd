@@ -15,7 +15,7 @@
 \details{
 If \code{abs(pan)<50}, mixtures of the two sources are used for the left and the right channel so that they appear closer to the center. For \code{pan=0}, both sounds are at the center. If \code{pan<0}, left and right channel are interchanged afterwards.
 
-If the samples have different sample parameters (bits, rate and channels), the command code{\link{fitSampleParameters}} is called to adjust them before the two samples are combined.
+If the samples have different sample parameters (bits, rate and channels), the command \code{\link{fitSampleParameters}} is called to adjust them before the two samples are combined.
 }
 
 \value{
